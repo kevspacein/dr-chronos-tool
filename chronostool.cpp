@@ -67,7 +67,7 @@ int main(){
 
         reasonTag:
 
-        std::cout<<"REASON: \n0)BASED ON IME, TREATMENT WAS NOT MEDICALLY NECESSARY \n1)BASED ON IME, NO FURTHER ORTHO TX MEDICALLY NECESSARY, \n2)BASED ON PT FAILIURE TO SHOW FOR IMES, \n3)BASED ON NO-FAULT EXHAUSTED \n4)BASED ON LATE FILING RULES \n5)PENDING, ADDITIONAL INFO NEEDED \n6)INVESTIGATION... \n7) \n8)BASED ON BILL BEING INCORRECTLY SUBMITTED \n9)CUSTOM \n";
+        std::cout<<"REASON: \n0)BASED ON IME, TREATMENT WAS NOT MEDICALLY NECESSARY \n1)BASED ON IME, NO FURTHER ORTHO TX MEDICALLY NECESSARY, \n2)BASED ON PT FAILIURE TO SHOW FOR IMES, \n3)BASED ON NO-FAULT EXHAUSTED \n4)BASED ON LATE FILING RULES \n5)PENDING, ADDITIONAL INFO NEEDED \n6)INVESTIGATION... \n7)BASED ON DUPLICATE BILLING \n8)BASED ON BILL BEING INCORRECTLY SUBMITTED \n9)CUSTOM \n";
         std::cin>>entry;
 
         switch(entry)
@@ -145,7 +145,7 @@ int main(){
             break;
 
             case 7:
-            
+            result.append("BASED ON DUPLICATE BILLING, ");
             break;
         
             case 8:
@@ -158,9 +158,10 @@ int main(){
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the input buffer
             std::getline(std::cin, custom);//apparently this does not exec due to a cin>> being in the stream
             std::cout << std::endl;
+            
             result += "BASED ON ";
             result += custom;
-            
+            result.append("  ");
             
             std::cout<<std::endl;
             break;
