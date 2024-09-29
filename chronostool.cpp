@@ -67,7 +67,7 @@ int main(){
 
         reasonTag:
 
-        std::cout<<"REASON: \n0)BASED ON IME, TREATMENT WAS NOT MEDICALLY NECESSARY \n1)BASED ON IME, NO FURTHER ORTHO TX MEDICALLY NECESSARY, \n2)BASED ON PT FAILIURE TO SHOW FOR IMES, \n3)BASED ON NO-FAULT EXHAUSTED \n4)BASED ON LATE FILING RULES \n5)PENDING, ADDITIONAL INFO NEEDED \n6)INVESTIGATION, INJURY WAS NOT RELATED \n7)INVESTIGATION, PT NOT ELIGIBLE \n8)BASED ON BILL BEING INCORRECTLY SUBMITTED \n9)CUSTOM \n";
+        std::cout<<"REASON: \n0)BASED ON IME, TREATMENT WAS NOT MEDICALLY NECESSARY \n1)BASED ON IME, NO FURTHER ORTHO TX MEDICALLY NECESSARY, \n2)BASED ON PT FAILIURE TO SHOW FOR IMES, \n3)BASED ON NO-FAULT EXHAUSTED \n4)BASED ON LATE FILING RULES \n5)PENDING, ADDITIONAL INFO NEEDED \n6)INVESTIGATION... \n7) \n8)BASED ON BILL BEING INCORRECTLY SUBMITTED \n9)CUSTOM \n";
         std::cin>>entry;
 
         switch(entry)
@@ -121,12 +121,31 @@ int main(){
             result.insert(0,"CLAIM DATED " +d1+'/'+d2+'/'+d3+' ');
             break;
         
-            case 6:
-            result.append("INVESTIGATION, INJURY NOT RELATED TO INCIDENT, ");
+            case 6: //INVESTIGATION MULTI-TAB
+
+            int investInput;
+            std::cout<< "BASED ON INVESTIGATION:\n 1) INJURY NOT RELATED TO INCIDENT \n 2) INCIDENT WAS INTENTIONAL \n 3)PT NOT ELIGIBLE FOR COVERAGE\n";
+            std::cin >> investInput;
+            result.append("BASED ON ");
+
+            switch(investInput)
+            {
+                case 1:
+                result.append("INVESTIGATION, INJURY NOT RELATED TO INCIDENT, ");
+                break;
+
+                case 2:
+                result.append("INVESTIGATION, INCIDENT WAS INTENTIONAL, "); 
+                break;
+                
+                case 3:
+                result.append("INVESTIGATION, PT NOT ELIGIBLE FOR COVERAGE, ");
+                break;
+            }
             break;
 
             case 7:
-            result.append("INVESTIGATION, PT NOT ELIGIBLE FOR COVERAGE, ");
+            
             break;
         
             case 8:
